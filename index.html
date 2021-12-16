@@ -5,6 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        button {
+            height: 1000px;
+            width: 1000px;
+            background-color: blueviolet;
+            border: none;
+            border-radius: 50%;
+        }
+        body {
+  background-color: #0CB1C4;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  /* transform: rotate(3deg); */
+   /* transform: rotate(0.3rad);/ */
+   /* transform: rotate(3grad); */ 
+   /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+    </style>
 </head>
 <body>
     <div id="vid"></div>
@@ -25,6 +54,7 @@
      function LoopTest() {
 var i=0;
 var stop=200;
+document.body.style.zoom = "25%";
 for (i=0;i<200;i++) {  
  var v = document.createElement('video');
  v.src= "249282526_361749259061881_634227581426512403_n.mp4";
