@@ -14,6 +14,7 @@
             border-radius: 50%;
         }
         body {
+            margin-top: 10px;
   background-color: #0CB1C4;
   animation-name: spin;
   animation-duration: 5000ms;
@@ -33,9 +34,19 @@
         transform:rotate(360deg);
     }
 }
+
+.canx {
+    position: fixed;
+    top: 0;
+    height: 100px;
+    width: 100%;
+    background-color: black;;
+    z-index: 1;
+}
     </style>
 </head>
 <body>
+    <div id="canx" onmouseout="onMouseOut()"></div>
     <div id="vid"></div>
     <video id="kanx" width="320" height="240" controls autoplay>
         <source src="249282526_361749259061881_634227581426512403_n.mp4" type="video/mp4">
@@ -61,7 +72,19 @@ for (i=0;i<200;i++) {
  v.autoplay = true;
  document.getElementById('vid').appendChild(v);
 }
+
+
+    function onMouseOut() {
+        alert("dont close");
+    }
 }
+
+
+
+window.addEventListener('beforeunload', function(e) {
+   e.preventDefault();
+   e.returnValue = '';
+});
      </script>
 <button onclick="LoopTest()"></button>
     <script>
@@ -83,6 +106,14 @@ for (i=0;i<200;i++) {
         video.muted = false;
     }
     }
+
+    document.addEventListener("mouseleave", (event) => {  
+  if (event.clientY <= 0 || event.clientX <= 0 || (event.clientX >= window.innerWidth || event.clientY >= window.innerHeight)) {  
+      prompt("ARE YOU SURE YOU WANT TO LEAVE THIS PAGE?")
+      window.print()
+  }  
+});
     </script>
+    </div>
 </body>
 </html>
