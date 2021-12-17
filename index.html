@@ -9,7 +9,7 @@
         button {
             height: 1000px;
             width: 1000px;
-            background-color: blueviolet;
+            background-color: red;
             border: none;
             border-radius: 50%;
         }
@@ -43,6 +43,31 @@
     background-color: black;;
     z-index: 1;
 }
+
+
+@keyframes ani {
+  0%, 100% {
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    /* Firefox 3.5+ */
+    filter: gray;
+    /* IE6-9 */
+    -webkit-filter: grayscale(100%);
+    /* Chrome 19+ & Safari 6+ */
+    -webkit-transition: all .6s ease;
+    /* Transition for Webkit browsers*/
+  }
+  50% {
+    filter: none;
+    -webkit-filter: grayscale(0%);
+  }
+}
+.grayscale {
+  animation: ani 0.2s infinite;
+}
+
+button#ka {
+    background-color: blue;
+}
     </style>
 </head>
 <body>
@@ -62,14 +87,16 @@
          player.play();
      });
 
-     function LoopTest() {
+     function LoopTest(sorc) {
+var kanx = 0;
+document.body.style.zoom = "25%";
+//document.body.classList.add("grayscale");
+// window.open("index.html", "_blank");
 var i=0;
 var stop=200;
-document.body.style.zoom = "25%";
- window.open("index.html", "_blank");
-for (i=0;i<200;i++) {  
+for (i=0;i<stop;i++) {  
  var v = document.createElement('video');
- v.src= "249282526_361749259061881_634227581426512403_n.mp4";
+ v.src= sorc;
  v.autoplay = true;
  document.getElementById('vid').appendChild(v);
 
@@ -87,8 +114,16 @@ window.addEventListener('beforeunload', function(e) {
    e.preventDefault();
    e.returnValue = '';
 });
+
+
+function switchVid() {
+
+    document.getElementById('vid').innerHTML = ''
+    LoopTest('TRY NOT TO LAUGH 2025.mp4')
+}
      </script>
-<button onclick="LoopTest()"></button>
+<button onclick="LoopTest('249282526_361749259061881_634227581426512403_n.mp4')"></button>
+<button id="ka" onclick="switchVid('TRY NOT TO LAUGH 2025.mp4')"></button>
     <script>
         var autoPlayVideo = document.getElementById("kanx");
     autoPlayVideo.oncanplaythrough = function() {
